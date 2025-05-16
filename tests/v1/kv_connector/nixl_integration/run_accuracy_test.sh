@@ -99,7 +99,7 @@ run_tests_for_model() {
   for i in $(seq 0 $((NUM_PREFILL_INSTANCES-1))); do
     # Calculate GPU ID - we'll distribute across available GPUs
     # For tensor parallelism, we need to assign multiple consecutive GPUs
-    BASE_GPU_ID=$((i % $(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)))
+    BASE_GPU_ID=$(((i * $PREFILLER_TP_SIZE) % $(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)))
     # Create a comma-separated list of GPU IDs for tensor parallelism
     GPU_IDS=""
     for ((j=0; j<$PREFILLER_TP_SIZE; j++)); do
