@@ -11,7 +11,7 @@ mkdir -p "$WORKSPACE"
 
 WHEEL_DIR="$WORKSPACE/dist"
 mkdir -p "$WHEEL_DIR"
-NVSHMEM_VER=3.4.5
+NVSHMEM_VER=3.3.9
 
 pushd "$WORKSPACE"
 
