@@ -11,7 +11,7 @@ mkdir -p "$WORKSPACE"
 
 WHEEL_DIR="$WORKSPACE/dist"
 mkdir -p "$WHEEL_DIR"
-NVSHMEM_VER=3.3.9
+NVSHMEM_VER=3.4.5
 
 pushd "$WORKSPACE"
 
@@ -129,19 +129,19 @@ do_build() {
 }
 
 # build pplx-kernels
-do_build \
-    "https://github.com/ppl-ai/pplx-kernels" \
-    "pplx-kernels" \
-    "setup.py" \
-    "12cecfd" \
-    ""
+# do_build \
+#     "https://github.com/ppl-ai/pplx-kernels" \
+#     "pplx-kernels" \
+#     "setup.py" \
+#     "12cecfd" \
+#     ""
 
 # build DeepEP
 do_build \
     "https://github.com/deepseek-ai/DeepEP" \
     "DeepEP" \
     "setup.py" \
-    "73b6ea4" \
+    "92fe2deaec24bc92ebd9de276daa6ca9ed602ed4" \
     "export NVSHMEM_DIR=$WORKSPACE/nvshmem; "
 
 if [ "$MODE" = "wheel" ]; then
